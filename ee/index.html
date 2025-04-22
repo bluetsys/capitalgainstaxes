@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>부동산세금계산</title>
+<!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
+<meta name="viewport" content="initial-scale=0.9; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;" /> 
+
+<link rel="stylesheet" href="jQueryMobile/jquery.mobile-1.4.5.min.css" />
+<script src="jQueryMobile/jquery-1.11.1.min.js"></script>
+<script src="jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="jQueryMobile/jquery.number.min.js"></script>
+
+<script src="js/calcYando.js"></script>
+<script src="js/basicCalc.js"></script>
+<script src="js/calcAcqTax.js"></script>
+<script src="js/constans.js"></script>
+<script src="js/util.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+    $('selector').css('width', $(window).width()); 
+    $('selector').css('height', $(window).height()); 
+    $(window).resize(function() { 
+        $('selector').css('width', $(window).width()); 
+        $('selector').css('height', $(window).height()); 
+    }); 
+});
+</script>
+
+<link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>	
+	
+	<div data-role="page" id="trnsTax">	
+	<div data-role="header" id="page" >	
+	
+		<a href="#left" data-role="button" data-icon="bars" data-ajax="false" class="ui-btn-left" data-iconpos="left" data-inline="true">메뉴</a>
+		<a href="#trnsTax" data-role="button" data-icon="home">HOME</a>		
+		<h1>부동산세금계산</h1>
+	
+		<div data-role="navbar" data-iconpos="top">
+		  <ul>
+			<li><a href="#">양도소득세</a></li>
+			<li><a href="acqTax.html" data-ajax="false">취득세</a></li>
+			<li><a href="calc.html" data-ajax="false">계산기</a></li>
+			<li><a href="#panCalc">패널계산기</a></li>
+		  </ul>
+		</div>
+	</div>
+	
+	<div data-role="panel" id="left" data-dismissible="false" data-display="overlay"> 
+		  <h1>부동산세금계산</h1>
+		  <div data-role="content" class="leftMenu">			
+			<ul data-role="listview" >				
+				<li><a href="#trnsTax" data-transition="slide">양도소득세</a></li>
+				<li><a href="acqTax.html" data-ajax="false" data-transition="slide">취득세</a></li>
+				<li><a href="calc.html" data-ajax="false" data-transition="slide">계산기</a></li>
+			</ul>
+		  </div>
+		  <div>
+		  	<p><a href="#" data-role="button" data-icon="delete" data-rel="close">닫기</a></p>
+		  </div>
+	</div>
+	
+	<div data-role="panel" id="panCalc" data-dismissible="false" data-display="overlay" data-position="right"> 
+		  <h1>패널계산기</h1>
+		    <p>
+				<label id="message0" class="calPanel">0</label>
+			</p>
+		
+			<div class="ui-grid-c">
+				<div class="ui-block-a">
+					<a href="#" data-role="button" onclick="btnClear('message0');">C</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-role="button" onclick="btnBackspace('message0');">&lt;</a>
+				</div>
+		
+				<div class="ui-block-a">
+					<a href="#" data-role="button" onclick="btnNumber('message0',7);">7</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-role="button" onclick="btnNumber('message0',8);">8</a>
+				</div>
+				<div class="ui-block-c">
+					<a href="#" data-role="button" onclick="btnNumber('message0',9);">9</a>
+				</div>
+				<div class="ui-block-d">
+					<a href="#" data-role="button" onclick="btnDivide();">/</a>
+				</div>
+		
+				<div class="ui-block-a">
+					<a href="#" data-role="button" onclick="btnNumber('message0',4);">4</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-role="button" onclick="btnNumber('message0',5);">5</a>
+				</div>
+				<div class="ui-block-c">
+					<a href="#" data-role="button" onclick="btnNumber('message0',6);">6</a>
+				</div>
+				<div class="ui-block-d">
+					<a href="#" data-role="button" onclick="btnMulti();">*</a>
+				</div>
+		
+				<div class="ui-block-a">
+					<a href="#" data-role="button" onclick="btnNumber('message0',1);">1</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-role="button" onclick="btnNumber('message0',2);">2</a>
+				</div>
+				<div class="ui-block-c">
+					<a href="#" data-role="button" onclick="btnNumber('message0',3);">3</a>
+				</div>
+				<div class="ui-block-d">
+					<a href="#" data-role="button" onclick="btnMinus();">-</a>
+				</div>
+		
+				<div class="ui-block-a">
+					<a href="#" data-role="button" onclick="btnNumber('message0',0);">0</a>
+				</div>
+		
+				<div class="ui-block-b">
+					<a href="#" data-role="button" onclick="btnPoint('message0');">.</a>
+				</div>
+				<div class="ui-block-c">
+					<a href="#" data-role="button" onclick="btnEqual('message0');">=</a>
+				</div>
+				<div class="ui-block-d">
+					<a href="#" data-role="button" onclick="btnPlus();">+</a>
+				</div>
+		
+			</div>
+			
+		  <div>
+		  	<p><a href="#" data-role="button" data-icon="delete" data-rel="close">닫기</a></p>
+		  </div>
+	</div>
+	
+	
+		<form>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<input type="radio" name="rdoType" id="rdoType1" value="on" checked="checked">
+				<label for="rdoType1">주택</label>
+				<input type="radio" name="rdoType" id="rdoType2" value="off">
+				<label for="rdoType2">건물,토지,분양권</label>
+				<input type="radio" name="rdoType" id="rdoType3" value="other">
+				<label for="rdoType3">비사업용토지(임야)</label>
+			</fieldset>
+	
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<input type="radio" name="radQty" id="radQty1" value="1" checked="checked">
+				<label for="radQty1">1주택</label>
+				<input type="radio" name="radQty" id="radQty2" value="2">
+				<label for="radQty2">2주택</label>
+				<input type="radio" name="radQty" id="radQty3" value="3">
+				<label for="radQty3">그 이상</label>
+			</fieldset>
+		
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<input type="checkbox" name="chkEtc" id="chkEtc1" value="off">
+				<label for="chkEtc1">2년실거주</label>
+				<input type="checkbox" name="chkEtc" id="chkEtc2" value="on">
+				<label for="chkEtc2">조정대상지역</label>				
+				<input type="checkbox" name="chkEtc" id="chkEtc3" value="off">
+				<label for="chkEtc3">임대사업자</label>
+			</fieldset>
+
+			<label>
+				<input type="checkbox" name="chkJntTncy" id="chkJntTncy" data-mini="true">공동명의
+			</label>
+	
+		</form>	
+		
+		<form>
+		<div>
+			<div class="lblGuide">
+				모든 입력 금액은 원단위 입니다.
+			</div>
+			<label for="fname2" class="bodyLabel">취득가액</label>
+			<input type="text" name="acqVal" pattern="[0-9]*" id="acqVal" value="" data-mini="true" onkeyup="inputAddPeriod('acqVal')" style="text-align:right">
+			<label for="lname" class="bodyLabel">양도가액</label>
+			<input type="text" name="trnsVal" pattern="[0-9]*" id="trnsVal" value="" data-mini="true" onkeyup="inputAddPeriod('trnsVal')" style="text-align:right">
+			<label for="lname" class="bodyLabel">소요경비</label>
+			<input type="text" name="reqExpnsVal" pattern="[0-9]*" id="reqExpnsVal" value="" data-mini="true" onkeyup="inputAddPeriod('reqExpnsVal')" style="text-align:right">
+			<label for="lname">취득일자</label>
+			<input type="date" name="acqDate" id="acqDate" value="" data-mini="true">
+			<label for="lname">양도일자</label>
+			<input type="date" name="trnsDate" id="trnsDate" value="" data-mini="true">
+		  </div>
+		</form>
+		
+		<div id="divCalcYando">
+			<a href="#" data-role="button" data-icon="action" data-mini="true" onclick="calcYandoTax()">양도소득세계산</a>	
+		</div>
+		
+		<!-- 동적 div 추가 -->
+		<div id="divCalcRst">
+		</div>
+		
+		<div data-role="navbar" data-iconpos="left">
+		  <ul>
+			<li><a href="" data-icon="back" data-rel="back">뒤로</a></li>
+			<li><a href="#" data-icon="refresh" onclick="initYandoTax()">초기화</a></li>
+			<li><a href="#fixed" data-icon="arrow-u">맨위로</a></li>
+		  </ul>
+		</div>
+		
+		<div data-role="footer">
+			<h2>Footer 입니다.</h2>
+		</div>
+	
+	</div>
+	
+</body>
+</html>

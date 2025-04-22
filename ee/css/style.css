@@ -1,0 +1,37 @@
+ .calPanel {
+  background: #ffd;
+  border:1px solid #999999;
+  display: block;
+  font-weight: bold;
+  margin:10px;
+  text-align: right;
+  padding: 12px 10px;
+ }
+ 
+ .bodyLabel{
+ 	color:#333333;
+/* 	 	font-family:Impact, Charcoal, sans-serif; */
+	font-family:¸¼Àº°íµñ;
+	font-weight:bold;
+	
+ }
+ .calcResult{
+	 	font-family:¸¼Àº°íµñ;
+	 	font-size:12px;
+	 	color:#225492; 
+/*  	 	font-family:Georgia,serif; */
+		font-weight:bold;
+ }
+ 
+ .lblGuide{
+	 	font-family:¸¼Àº°íµñ;
+	 	font-size:12px;
+	 	color:#225492; 		
+		text-align:right;
+ }
+ 
+ .textAlignRight{
+ 	text-align:right;
+ }
+	 
+ 
