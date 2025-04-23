@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>부동산세금계산</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="jQueryMobile/jquery.mobile-1.4.5.min.css" />
-<script src="jQueryMobile/jquery-1.11.1.min.js"></script>
-<script src="jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
-<script src="jQueryMobile/jquery.number.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>부동산세금계산</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="jQueryMobile/jquery.mobile-1.4.5.min.css" />
+	<script src="jQueryMobile/jquery-1.11.1.min.js"></script>
+	<script src="jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
+	<script src="jQueryMobile/jquery.number.min.js"></script>
 
-<script src="js/calcYando.js"></script>
-<script src="js/basicCalc.js"></script>
-<script src="js/calcAcqTax.js"></script>
-<script src="js/constans.js"></script>
-<script src="js/util.js"></script>
+	<script src="js/calcYando.js"></script>
+	<script src="js/basicCalc.js"></script>
+	<script src="js/calcAcqTax.js"></script>
+	<script src="js/constans.js"></script>
+	<script src="js/util.js"></script>
 
-<link href="css/style.css" type="text/css" rel="stylesheet">
+	<link href="css/style.css" type="text/css" rel="stylesheet">
 </head>
-<body>	
-	
+
+<body>
+
 	<!-- 계산기 페이지-->
 	<div data-role="page" id="pageCalc">
-		<div data-role="header" id="page" >
-			<a href="#left" data-role="button" data-icon="bars" data-ajax="false" class="ui-btn-left" data-iconpos="left" data-inline="true">메뉴</a>
-			<a href="index.html" data-ajax="false" data-role="button" data-icon="home">HOME</a>		
+		<div data-role="header" id="page">
+			<a href="#left" data-role="button" data-icon="bars" data-ajax="false" class="ui-btn-left"
+				data-iconpos="left" data-inline="true">메뉴</a>
+			<a href="index.html" data-ajax="false" data-role="button" data-icon="home">HOME</a>
 			<h1>부동산세금계산</h1>
-		
+
 			<div data-role="navbar" data-iconpos="top">
-			  <ul>
-				<li><a href="index.html" data-ajax="false">양도소득세</a></li>
-				<li><a href="acqTax.html" data-ajax="false">취득세</a></li>
-				<li><a href="#">계산기</a></li>
-				<li><a href="#panCalc">패널계산기</a></li>
-			  </ul>
+				<ul>
+					<li><a href="index.html" data-ajax="false">양도소득세</a></li>
+					<li><a href="acqTax.html" data-ajax="false">취득세</a></li>
+					<li><a href="#">계산기</a></li>
+					<li><a href="#panCalc">패널계산기</a></li>
+				</ul>
 			</div>
-		</div>	
-	
-		<div data-role="panel" id="left" data-dismissible="false" data-display="overlay"> 
-			  <h1>부동산세금계산</h1>
-			  <div data-role="content" class="leftMenu">			
-				<ul data-role="listview" >				
+		</div>
+
+		<div data-role="panel" id="left" data-dismissible="false" data-display="overlay">
+			<h1>부동산세금계산</h1>
+			<div data-role="content" class="leftMenu">
+				<ul data-role="listview">
 					<li><a href="index.html" data-ajax="false" data-transition="slide">양도소득세</a></li>
 					<li><a href="acqTax.html" data-ajax="false" data-transition="slide">취득세</a></li>
 					<li><a href="#" data-transition="slide">계산기</a></li>
 				</ul>
-			  </div>
-			  <div>
-			  	<p><a href="#" data-role="button" data-icon="delete" data-rel="close">닫기</a></p>
-			  </div>
+			</div>
+			<div>
+				<p><a href="#" data-role="button" data-icon="delete" data-rel="close">닫기</a></p>
+			</div>
 		</div>
-		
+
 		<form>
-		<p>
+			<p>
 				<label id="message" class="calPanel">0</label>
 			</p>
-		
+
 			<div class="ui-grid-c">
 				<div class="ui-block-a">
 					<a href="#" data-role="button" onclick="btnClear('message');">C</a>
@@ -62,7 +65,7 @@
 				<div class="ui-block-b">
 					<a href="#" data-role="button" onclick="btnBackspace('message');">&lt;</a>
 				</div>
-		
+
 				<div class="ui-block-a">
 					<a href="#" data-role="button" onclick="btnNumber('message',7);">7</a>
 				</div>
@@ -75,7 +78,7 @@
 				<div class="ui-block-d">
 					<a href="#" data-role="button" onclick="btnDivide();">/</a>
 				</div>
-		
+
 				<div class="ui-block-a">
 					<a href="#" data-role="button" onclick="btnNumber('message',4);">4</a>
 				</div>
@@ -88,7 +91,7 @@
 				<div class="ui-block-d">
 					<a href="#" data-role="button" onclick="btnMulti();">*</a>
 				</div>
-		
+
 				<div class="ui-block-a">
 					<a href="#" data-role="button" onclick="btnNumber('message',1);">1</a>
 				</div>
@@ -101,11 +104,11 @@
 				<div class="ui-block-d">
 					<a href="#" data-role="button" onclick="btnMinus();">-</a>
 				</div>
-		
+
 				<div class="ui-block-a">
 					<a href="#" data-role="button" onclick="btnNumber('message',0);">0</a>
 				</div>
-		
+
 				<div class="ui-block-b">
 					<a href="#" data-role="button" onclick="btnPoint('message');">.</a>
 				</div>
@@ -115,23 +118,24 @@
 				<div class="ui-block-d">
 					<a href="#" data-role="button" onclick="btnPlus();">+</a>
 				</div>
-		
+
 			</div>
-		  
-		</form>		
-		
+
+		</form>
+
 		<div data-role="navbar" data-iconpos="left">
-		  <ul>
-			<li><a href="" data-icon="back" data-rel="back">뒤로</a></li>
-			<li><a href="#right" data-icon="refresh">초기화</a></li>
-			<li><a href="#fixed" data-icon="arrow-u">맨위로</a></li>
-		  </ul>
+			<ul>
+				<li><a href="" data-icon="back" data-rel="back">뒤로</a></li>
+				<li><a href="#right" data-icon="refresh">초기화</a></li>
+				<li><a href="#fixed" data-icon="arrow-u">맨위로</a></li>
+			</ul>
 		</div>
-		
+
 		<div data-role="footer">
 			<h2>Footer 입니다.</h2>
 		</div>
 	</div>
-	
+
 </body>
+
 </html>
